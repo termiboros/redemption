@@ -1,0 +1,28 @@
+---
+title: "QUIC-Driven File Transfer My Preferred Method"
+publishedAt: "2025-04-20"
+summary: "A shift from ordinary file transfer to a superior approach."
+tag: "cli"
+---
+
+## Pget: A Tool I Usually Use
+
+Pget, a Go-built tool, is one I often employ for fetching files from cloud storage like S3. It’s fast, using parallel downloads with <InlineCode>pget -p 6 random url</InlineCode>, extracting tar archives in memory, and supporting resumable downloads. Install it via <InlineCode>brew install replicate/tap/pget</InlineCode> or from <SmartLink href="https://github.com/replicate/pget" suffixIcon="github">github.com/replicate/pget</SmartLink>. It’s open-source. On Windows, it stumbles—crashes, slowdowns. I might suggest it, but it’s just a tool nothing more.
+
+## My Command: The QUIC/KCP Approach
+
+
+Consider this: a file transfer method that eclipses Pget’s simplicity. My preferred approach harnesses QUIC or raw KCP for a direct, high-speed connection. The flow is stark: User Device → QUIC/KCP → Server → File downloaded via HTTP/2, cached temporarily → Delivered to you via QUIC or HTTP/3. No intricacy, just precision.
+
+
+```bash
+User Device -> QUIC/KCP -> Server -> HTTP/2 fetch -> Temp cache -> QUIC/HTTP/3 delivery
+```
+
+This method, unburdened by previous tools, leverages QUIC’s low-latency multiplexing or KCP’s optimized UDP for congested networks. It’s not about basic parallel downloads—advanced techniques like adaptive congestion control or predictive prefetching could be applied, though I leave such details to implementation. Windows issues? Irrelevant when you command the protocol itself. This is my way, and it reigns supreme.
+
+See? this is just my vision. maybe you will found out more later
+<SmartLink href="https://github.com/termiboros/" suffixIcon="github">github.com/termiboros</SmartLink>.
+
+`4:51 AM`
+4/27/2025
