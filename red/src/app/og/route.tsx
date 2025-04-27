@@ -5,12 +5,8 @@ import { person } from "@/app/resources/content";
 export const runtime = "edge";
 
 export async function GET(request: Request) {
-  let url = new URL(request.url);
-  let title = url.searchParams.get("title") || "Portfolio";
-  const font = fetch(new URL("../../../public/fonts/Inter.ttf", import.meta.url)).then((res) =>
-    res.arrayBuffer(),
-  );
-  const fontData = await font;
+  const url = new URL(request.url);
+  const title = url.searchParams.get("title") || "Portfolio";
 
   return new ImageResponse(
     <div
@@ -18,7 +14,7 @@ export async function GET(request: Request) {
         display: "flex",
         width: "100%",
         height: "100%",
-        padding: "8rem",
+        padding: "4rem",
         background: "#151515",
       }}
     >
@@ -27,16 +23,15 @@ export async function GET(request: Request) {
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          gap: "4rem",
-          fontFamily: "Inter",
-          fontStyle: "normal",
+          gap: "2rem",
+          fontFamily: "'Helvetica Neue', Roboto, 'Segoe UI', sans-serif",
           color: "white",
         }}
       >
         <span
           style={{
-            fontSize: "8rem",
-            lineHeight: "8rem",
+            fontSize: "4rem",
+            lineHeight: "4rem",
             letterSpacing: "-0.05em",
             whiteSpace: "pre-wrap",
             textWrap: "balance",
@@ -48,29 +43,29 @@ export async function GET(request: Request) {
           style={{
             display: "flex",
             alignItems: "center",
-            gap: "5rem",
+            gap: "2.5rem",
           }}
         >
           <img
             src={baseURL + person.avatar}
             style={{
-              width: "12rem",
-              height: "12rem",
+              width: "6rem",
+              height: "6rem",
               objectFit: "cover",
-              borderRadius: "100%",
+              borderRadius: "50%",
             }}
           />
           <div
             style={{
               display: "flex",
               flexDirection: "column",
-              gap: "0.75rem",
+              gap: "0.5rem",
             }}
           >
             <span
               style={{
-                fontSize: "4.5rem",
-                lineHeight: "4.5rem",
+                fontSize: "2.25rem",
+                lineHeight: "2.25rem",
                 whiteSpace: "pre-wrap",
                 textWrap: "balance",
               }}
@@ -79,8 +74,8 @@ export async function GET(request: Request) {
             </span>
             <span
               style={{
-                fontSize: "2.5rem",
-                lineHeight: "2.5rem",
+                fontSize: "1.25rem",
+                lineHeight: "1.25rem",
                 whiteSpace: "pre-wrap",
                 textWrap: "balance",
                 opacity: "0.6",
@@ -93,15 +88,8 @@ export async function GET(request: Request) {
       </div>
     </div>,
     {
-      width: 1920,
-      height: 1080,
-      fonts: [
-        {
-          name: "Inter",
-          data: fontData,
-          style: "normal",
-        },
-      ],
-    },
+      width: 1200,
+      height: 630,
+    }
   );
 }
